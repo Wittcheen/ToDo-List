@@ -1,4 +1,5 @@
-﻿using Client.ViewModels;
+﻿using ClassLibrary.Database;
+using Client.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,10 +41,20 @@ namespace Client.UserControls
 
         private void DeleteToDo_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                int toDoID = Convert.ToInt32((sender as Button).Tag);
+                ContentArea.NavigateToConfirmDeleteToDo(toDoID);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         private void NewToDo_Click(object sender, RoutedEventArgs e)
         {
+            ContentArea.NavigateToCreateToDo();
         }
     }
 }

@@ -101,6 +101,25 @@
                 <Setter Property="BorderThickness" Value="0"/>
             </Style>
 
+            <Style x:Key="text_box" TargetType="TextBox">
+                <Style.Setters>
+                    <Setter Property="Background" Value="#eee"/>
+                    <Setter Property="FontFamily" Value="Libre Baskerville"/>
+                    <Setter Property="Foreground" Value="#1c1d25"/>
+                    <Setter Property="Padding" Value="3"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TextBox">
+                                <Border CornerRadius="10" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
+                                    <ScrollViewer x:Name="PART_ContentHost"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style.Setters>
+            </Style>
+            <!--#endregion-->
+
             <!--#region BUTTON STYLES-->
             <Style x:Key="btn" TargetType="Button">
                 <Setter Property="Cursor" Value="Hand"/>

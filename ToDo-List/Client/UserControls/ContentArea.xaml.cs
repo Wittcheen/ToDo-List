@@ -35,5 +35,6 @@ namespace Client.UserControls
         public static void NavigateToHomeScreen() => Navigator(new HomeScreen());
         public static void NavigateToConfirmSignOut() => Navigator(new Confirm(true));
         public static void NavigateToConfirmDeleteToDo(int toDoID) => Navigator(new Confirm(true, toDoID));
+        public static void NavigateToCreateToDo() => Navigator(new CreateToDo());
     }
 }

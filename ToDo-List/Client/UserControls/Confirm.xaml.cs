@@ -48,7 +48,7 @@ namespace Client.UserControls
             ToDoID = toDoID;
             if (deleteToDo == true)
             {
-                vm.ConfirmMessage = $"Are you sure, you wan't to delete todo {toDoID}?";
+                vm.ConfirmMessage = $"Are you sure, you wan't to delete to-do {toDoID}?";
             }
         }
 
