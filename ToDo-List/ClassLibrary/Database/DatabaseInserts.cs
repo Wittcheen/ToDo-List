@@ -15,7 +15,7 @@ namespace ClassLibrary.Database
         /// <returns>The insertet user</returns>
         public User InsertUser(User user)
         {
-            string sqlInsert = $@"EXEC InsertUser {user.Username}, {user.Password}";
+            string sqlInsert = $@"EXEC InsertUser {user.Username}, '{user.Password}'";
             ExecuteSqlCommand(sqlInsert);
             return user;
         }

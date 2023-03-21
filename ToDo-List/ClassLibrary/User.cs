@@ -37,22 +37,41 @@ namespace ClassLibrary
         /// <summary>
         /// Validates the users login
         /// </summary>
-        /// <param name="loginUserName"></param>
+        /// <param name="loginUsername"></param>
         /// <param name="loginPassword"></param>
         /// <returns>Returns boolean</returns>
-        public static bool ValidateLogin(string loginUserName, string loginPassword)
+        public static bool ValidateLogin(string loginUsername, string loginPassword)
         {
-            string HashedPassword = HashPassword(loginPassword);
+            string hashedPassword = HashPassword(loginPassword);
             ObservableCollection<User> users = Database.Database.Instance.ImportAllUsers();
 
             for (int i = 0; i < users.Count; i++)
             {
-                if (users[i].Username == loginUserName)
+                if (users[i].Username == loginUsername)
                 {
-                    if (users[i].Password == HashedPassword)
+                    if (users[i].Password == hashedPassword)
                     {
                         return true;
                     }
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Checks if the user already exist in the database
+        /// </summary>
+        /// <param name="loginUsername"></param>
+        /// <returns>Returns boolean</returns>
+        public static bool UserExist(string loginUsername)
+        {
+            ObservableCollection<User> users = Database.Database.Instance.ImportAllUsers();
+
+            for (int i = 0; i < users.Count; i++)
+            {
+                if (users[i].Username == loginUsername)
+                {
+                    return true;
                 }
             }
             return false;
