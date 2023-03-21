@@ -16,6 +16,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
+        <Label Grid.Row="0" Content="{Binding UsersToDosCount}" ContentStringFormat="Your to-dos: {0}" Margin="5,5,0,0" FontFamily="League Spartan" FontSize="15"/>
         <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" CanContentScroll="False" Margin="0,35,0,0">
             <StackPanel>
                 <ItemsControl ItemsSource="{Binding UsersToDos}">

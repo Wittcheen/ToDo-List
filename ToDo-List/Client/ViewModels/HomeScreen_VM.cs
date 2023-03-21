@@ -46,6 +46,17 @@ namespace Client.ViewModels
             set { }
         }
 
+        private int _usersToDosCount;
+        public int UsersToDosCount
+        {
+            get { return _usersToDosCount; }
+            set
+            {
+                _usersToDosCount = value;
+                OnPropertyChanged(nameof(UsersToDosCount));
+            }
+        }
+
         private ObservableCollection<ToDo> _usersToDos;
         public ObservableCollection<ToDo> UsersToDos
         {
@@ -62,6 +73,7 @@ namespace Client.ViewModels
             foreach (var todo in Database.Instance.ImportUsersToDos(Username))
             {
                 UsersToDos.Add(todo);
+                UsersToDosCount++;
             }
         }
     }

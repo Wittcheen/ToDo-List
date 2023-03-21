@@ -29,6 +29,7 @@ namespace Client.UserControls
             DataContext = vm;
 
             vm.UsersToDos.Clear();
+            vm.UsersToDosCount = 0;
             vm.FillUsersToDos();
         }
 
