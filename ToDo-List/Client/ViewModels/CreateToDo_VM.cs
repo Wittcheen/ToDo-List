@@ -68,6 +68,7 @@ namespace Client.ViewModels
                 Database.Instance.CreateToDo(todo);
                 ContentArea.NavigateToHomeScreen();
                 ToDo = string.Empty;
+                ErrorMessage = string.Empty;
             }
             else
             {

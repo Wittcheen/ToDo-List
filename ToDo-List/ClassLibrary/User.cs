@@ -21,6 +21,11 @@ namespace ClassLibrary
             Password = password;
         }
 
+        public User(string username)
+        {
+            Username = username;
+        }
+
         /// <summary>
         /// Hashes the password, so it's harder to see in the database
         /// </summary>
@@ -43,16 +48,13 @@ namespace ClassLibrary
         public static bool ValidateLogin(string loginUsername, string loginPassword)
         {
             string hashedPassword = HashPassword(loginPassword);
-            ObservableCollection<User> users = Database.Database.Instance.ImportAllUsers();
+            User user = Database.Database.Instance.ImportUser(loginUsername);
 
-            for (int i = 0; i < users.Count; i++)
+            if (user.Username == loginUsername)
             {
-                if (users[i].Username == loginUsername)
+                if (user.Password == hashedPassword)
                 {
-                    if (users[i].Password == hashedPassword)
-                    {
-                        return true;
-                    }
+                    return true;
                 }
             }
             return false;

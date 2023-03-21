@@ -71,6 +71,7 @@ namespace Client.ViewModels
                         User user = new(Username, hashedPassword);
                         Database.Instance.InsertUser(user);
                         ContentArea.NavigateToSignIn();
+                        ErrorMessage = string.Empty;
                     }
                     else
                     {

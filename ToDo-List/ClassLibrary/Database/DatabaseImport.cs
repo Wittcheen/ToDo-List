@@ -19,12 +19,12 @@ namespace ClassLibrary.Database
             ObservableCollection<User> users = new();
             using (var connection = GetDatabaseConnection())
             {
-                SqlDataReader reader = ExecuteReader(connection, "SELECT userID, username, password FROM Users");
+                SqlDataReader reader = ExecuteReader(connection, "SELECT userID, username FROM Users");
                 try
                 {
                     while (reader.Read())
                     {
-                        User user = new(reader.GetString(1), reader.GetString(2))
+                        User user = new(reader.GetString(1))
                         {
                             ID = reader.GetInt32(0)
                         };
@@ -36,6 +36,35 @@ namespace ClassLibrary.Database
                 }
             }
             return users;
+        }
+
+        /// <summary>
+        /// Gets a user from the database from the username
+        /// </summary>
+        /// <param name="username">The username to check</param>
+        /// <returns>Returns the checked username</returns>
+        public User ImportUser(string username)
+        {
+            User user = new("");
+            using (var connection = GetDatabaseConnection())
+            {
+                SqlDataReader reader = ExecuteReader(connection, "SELECT userID, username, password FROM Users " +
+                    "WHERE username LIKE '" + username + "'");
+                try
+                {
+                    while (reader.Read())
+                    {
+                        user = new(reader.GetString(1), reader.GetString(2))
+                        {
+                            ID = reader.GetInt32(0)
+                        };
+                    }
+                }
+                catch (Exception)
+                {
+                }
+            }
+            return user;
         }
 
         /// <summary>

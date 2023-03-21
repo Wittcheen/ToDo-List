@@ -65,6 +65,7 @@ namespace Client.ViewModels
                     if (validateLogin == true)
                     {
                         ContentArea.NavigateToHomeScreen();
+                        ErrorMessage = string.Empty;
                     }
                     else
                     {
