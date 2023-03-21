@@ -1,0 +1,23 @@
+﻿<mah:MetroWindow x:Class="Client.StartWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Client.UserControls"
+        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        ShowIconOnTitleBar="False"
+        Style="{DynamicResource window}"
+        Title="To-Do List">
+    <mah:MetroWindow.TitleTemplate>
+        <DataTemplate>
+            <TextBlock Text="{TemplateBinding Content}" VerticalAlignment="Center" Margin="8,5,8,0"
+                   FontSize="16" FontFamily="{DynamicResource HeaderFontFamily}"/>
+        </DataTemplate>
+    </mah:MetroWindow.TitleTemplate>
+    <mah:MetroWindow.TitleCharacterCasing>Normal</mah:MetroWindow.TitleCharacterCasing>
+    <Grid>
+        <local:ContentArea></local:ContentArea>
+    </Grid>
+</mah:MetroWindow>
