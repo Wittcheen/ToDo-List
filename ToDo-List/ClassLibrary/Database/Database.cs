@@ -34,7 +34,7 @@ namespace ClassLibrary.Database
             {
                 DataSource = "sql.itcn.dk\\TCAA",
                 InitialCatalog = "chri36ky2.SKOLE",
-                UserID = "username",
+                UserID = "chri36ky.SKOLE",
                 Password = "password"
             };
             string connectionstring = sb.ToString();
