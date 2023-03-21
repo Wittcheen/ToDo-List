@@ -31,5 +31,6 @@ namespace Client.UserControls
         private static void Navigator(UserControl control) => Instance.Content = control;
 
         public static void NavigateToSignIn() => Navigator(new SignIn());
+        public static void NavigateToSignUp() => Navigator(new SignUp());
     }
 }

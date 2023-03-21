@@ -7,6 +7,39 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="360"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Row="1" Grid.Column="1" Background="#f3f3f3" CornerRadius="20">
+            <StackPanel Margin="20">
+                <Label Content="Sign in" Foreground="#1c1d25" FontSize="45" FontFamily="League Spartan" HorizontalAlignment="Center"/>
+                <Label Content="{Binding ErrorMessage}" Foreground="#ef3636" FontSize="13" FontFamily="League Spartan" HorizontalAlignment="Center"/>
+
+                <Label Content="Username" Foreground="#1c1d25" FontSize="13" FontFamily="League Spartan" Margin="0,20,0,0"/>
+                <TextBox Style="{StaticResource input_box}" FontSize="14" Text="{Binding Username}" MaxLength="25"/>
+                <Line Stroke="#1c1d25" X1="0" X2="500" Margin="5,2,5,0" StrokeThickness="4" RenderOptions.EdgeMode="Aliased" UseLayoutRounding="False" SnapsToDevicePixels="True"/>
+
+                <Label Content="Password" Foreground="#1c1d25" FontSize="13" FontFamily="League Spartan" Margin="0,15,0,0"/>
+                <PasswordBox Name="Box_Password" Style="{StaticResource password_box}" FontSize="14" MaxLength="25" PasswordChar="*"/>
+                <Line Stroke="#1c1d25" X1="0" X2="500" Margin="5,2,5,0" StrokeThickness="3" RenderOptions.EdgeMode="Aliased" UseLayoutRounding="False" SnapsToDevicePixels="True"/>
+            </StackPanel>
+        </Border>
+
+        <Button Grid.Row="1" Grid.Column="1" Style="{StaticResource btn_Grey}" Margin="20" Width="170" Height="50" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="CreateUser_Click">
+            <Label Content="CREATE USER" Margin="0,4,0,0"/>
+        </Button>
+
+        <Button Grid.Row="1" Grid.Column="1" Style="{StaticResource btn_Green}" Margin="20" Width="170" Height="50" FontSize="18" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="SignIn_Click">
+            <Label Content="SIGN IN" Margin="0,4,0,0"/>
+        </Button>
     </Grid>
 </UserControl>

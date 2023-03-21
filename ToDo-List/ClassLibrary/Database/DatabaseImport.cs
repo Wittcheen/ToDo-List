@@ -19,7 +19,7 @@ namespace ClassLibrary.Database
             ObservableCollection<User> users = new();
             using (var connection = GetDatabaseConnection())
             {
-                SqlDataReader reader = ExecuteReader(connection, "SELECT userID, username, password FROM chri36ky2.SKOLE");
+                SqlDataReader reader = ExecuteReader(connection, "SELECT userID, username, password FROM Users");
                 try
                 {
                     while (reader.Read())
@@ -49,7 +49,7 @@ namespace ClassLibrary.Database
             using (var connection = GetDatabaseConnection())
             {
                 SqlDataReader reader = ExecuteReader(connection, "SELECT ToDoID, username_FK, description" +
-                    "FROM chri36ky2.SKOLE WHERE username_FK LIKE '" + username + "'");
+                    "FROM ToDos WHERE username_FK LIKE '" + username + "'");
                 try
                 {
                     while (reader.Read())

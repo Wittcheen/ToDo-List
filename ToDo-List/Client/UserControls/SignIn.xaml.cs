@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Client.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,23 @@ namespace Client.UserControls
     /// </summary>
     public partial class SignIn : UserControl
     {
+        private readonly SignIn_VM vm = SignIn_VM.Instance;
+
         public SignIn()
         {
             InitializeComponent();
+            DataContext = vm;
+        }
+
+        private void CreateUser_Click(object sender, RoutedEventArgs e)
+        {
+            ContentArea.NavigateToSignUp();
+        }
+
+        public void SignIn_Click(object sender, RoutedEventArgs e)
+        {
+            string password = Box_Password.Password.ToString();
+            vm.SignIn(password);
         }
     }
 }

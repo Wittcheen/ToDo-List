@@ -26,7 +26,7 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="password">The password to be hashed</param>
         /// <returns>Returns the hashed password</returns>
-        public string HashPassword(string password)
+        public static string HashPassword(string password)
         {
             HashAlgorithm sha = SHA256.Create();
             byte[] result = sha.ComputeHash(Encoding.ASCII.GetBytes(password));
@@ -40,7 +40,7 @@ namespace ClassLibrary
         /// <param name="loginUserName"></param>
         /// <param name="loginPassword"></param>
         /// <returns>Returns boolean</returns>
-        public bool ValidateLogin(string loginUserName, string loginPassword)
+        public static bool ValidateLogin(string loginUserName, string loginPassword)
         {
             string HashedPassword = HashPassword(loginPassword);
             ObservableCollection<User> users = Database.Database.Instance.ImportAllUsers();
