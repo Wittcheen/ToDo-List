@@ -38,7 +38,7 @@
 
         <StatusBar Grid.Row="2" BorderBrush="#2b2d38" BorderThickness="0,3,0,0">
             <StatusBarItem FontSize="16">
-                <Label FontFamily="League Spartan" Content="{Binding Username}" ContentStringFormat="Signed in as: {0}"/>
+                <Label FontFamily="League Spartan" Content="{Binding Username}" ContentStringFormat="Signed in as:  {0}"/>
             </StatusBarItem>
         </StatusBar>
 

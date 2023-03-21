@@ -48,7 +48,7 @@ namespace ClassLibrary.Database
             ObservableCollection<ToDo> toDos = new();
             using (var connection = GetDatabaseConnection())
             {
-                SqlDataReader reader = ExecuteReader(connection, "SELECT ToDoID, username_FK, description" +
+                SqlDataReader reader = ExecuteReader(connection, "SELECT ToDoID, username_FK, description " +
                     "FROM ToDos WHERE username_FK LIKE '" + username + "'");
                 try
                 {
