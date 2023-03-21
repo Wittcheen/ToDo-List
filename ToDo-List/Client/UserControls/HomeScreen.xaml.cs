@@ -35,6 +35,7 @@ namespace Client.UserControls
 
         private void SignOut_Click(object sender, RoutedEventArgs e)
         {
+            ContentArea.NavigateToConfirmSignOut();
         }
 
         private void DeleteToDo_Click(object sender, RoutedEventArgs e)

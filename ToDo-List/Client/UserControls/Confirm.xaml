@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="Client.UserControls.Confirm"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Client.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="230"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Row="1" Grid.Column="1" Background="#f3f3f3" CornerRadius="20">
+            <StackPanel Margin="20">
+                <Label Content="Confirm" Foreground="#1c1d25" FontSize="45" FontFamily="League Spartan" HorizontalAlignment="Center"/>
+                <Label Content="{Binding ConfirmMessage}" Foreground="#ef3636" FontSize="15" FontFamily="League Spartan" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+
+        <Button Grid.Row="1" Grid.Column="1" Style="{StaticResource btn_Green}" Margin="70, 30, 0, 30" Width="100" Height="50" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Yes_Click">
+            <Label Content="YES" Margin="0,4,0,0"/>
+        </Button>
+
+        <Button Grid.Row="1" Grid.Column="1" Style="{StaticResource btn_Red}" Margin="30, 0, 70, 30" Width="100" Height="50" FontSize="18" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="No_Click">
+            <Label Content="NO" Margin="0,4,0,0"/>
+        </Button>
+
+        <StatusBar Grid.Row="3" Grid.ColumnSpan="3" BorderBrush="#2b2d38" BorderThickness="0,3,0,0">
+            <StatusBarItem FontSize="16">
+                <Label FontFamily="League Spartan" Content="{Binding Username}" ContentStringFormat="Signed in as:  {0}"/>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</UserControl>
