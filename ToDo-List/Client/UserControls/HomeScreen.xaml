@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="Client.UserControls.HomeScreen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Client.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" CanContentScroll="False" Margin="0,35,0,0">
+            <StackPanel>
+                <ItemsControl ItemsSource="{Binding UsersToDos}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Background="#2b2d38" BorderThickness="0" CornerRadius="5" Margin="10,5,10,0" Padding="5">
+                                <Grid>
+                                    <Label Foreground="#f3f3f3" Content="{Binding Description}" FontSize="14" FontFamily="League Spartan" Margin="0,2,0,0"/>
+                                    <Button Tag="{Binding ID}" Style="{StaticResource btn_Light}" Width="110" Height="40" FontSize="13" HorizontalAlignment="Right" Click="DeleteToDo_Click">
+                                        <Label Content="Delete" Margin="0,2,0,0"/>
+                                    </Button>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </ScrollViewer>
+
+        <StatusBar Grid.Row="2" BorderBrush="#2b2d38" BorderThickness="0,3,0,0">
+            <StatusBarItem FontSize="16">
+                <Label FontFamily="League Spartan" Content="{Binding Username}" ContentStringFormat="Signed in as: {0}"/>
+            </StatusBarItem>
+        </StatusBar>
+
+        <Button Grid.Row="2" Style="{StaticResource btn_Red}" Margin="0,3,158,0" Width="100" Height="40" FontSize="14" HorizontalAlignment="Right" VerticalAlignment="Center" Click="SignOut_Click">
+            <Label Content="SIGN OUT" Margin="0,2,0,0"/>
+        </Button>
+        <Button Grid.Row="2" Style="{StaticResource btn_Grey}" Margin="0,3,10,0" Width="140" Height="40" FontSize="14" HorizontalAlignment="Right" VerticalAlignment="Center" Click="NewToDo_Click">
+            <Label Content="CREATE TODO" Margin="0,2,0,0"/>
+        </Button>
+    </Grid>
+</UserControl>

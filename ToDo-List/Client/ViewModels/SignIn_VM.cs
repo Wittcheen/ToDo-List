@@ -64,6 +64,7 @@ namespace Client.ViewModels
                     bool validateLogin = ClassLibrary.User.ValidateLogin(Username, password);
                     if (validateLogin == true)
                     {
+                        ContentArea.NavigateToHomeScreen();
                     }
                     else
                     {

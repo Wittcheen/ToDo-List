@@ -22,11 +22,5 @@ namespace ClassLibrary
         {
             return $"{ID}: {Description}";
         }
-
-        public string ToDoString
-        {
-            get { return ToString(); }
-            private set { }
-        }
     }
 }
