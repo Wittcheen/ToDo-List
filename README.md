@@ -6,7 +6,7 @@
 <div align="center">You can create a user to the database, and use that user to login.</div>
 <br><br>
 <div align="center">
-<img src="https://i.gyazo.com/8e1ddd8db20a3d6464379a5399d1daec.png" align="center" width="35%" height="35%"/>
+<img src="https://i.gyazo.com/8e1ddd8db20a3d6464379a5399d1daec.png" align="center" width="10%" height="10%"/>
 </div>
 
 ## <div align="center">Home Screen</div>
