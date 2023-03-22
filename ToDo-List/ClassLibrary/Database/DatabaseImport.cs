@@ -11,63 +11,6 @@ namespace ClassLibrary.Database
     public partial class Database
     {
         /// <summary>
-        /// Gets all the users from the database
-        /// </summary
-        /// <returns>List with all the users</returns>
-        public ObservableCollection<User> ImportAllUsers()
-        {
-            ObservableCollection<User> users = new();
-            using (var connection = GetDatabaseConnection())
-            {
-                SqlDataReader reader = ExecuteReader(connection, "SELECT userID, username FROM Users");
-                try
-                {
-                    while (reader.Read())
-                    {
-                        User user = new(reader.GetString(1))
-                        {
-                            ID = reader.GetInt32(0)
-                        };
-                        users.Add(user);
-                    }
-                }
-                catch (Exception)
-                {
-                }
-            }
-            return users;
-        }
-
-        /// <summary>
-        /// Gets a user from the database from the username
-        /// </summary>
-        /// <param name="username">The username to check</param>
-        /// <returns>Returns the checked username</returns>
-        public User ImportUser(string username)
-        {
-            User user = new("");
-            using (var connection = GetDatabaseConnection())
-            {
-                SqlDataReader reader = ExecuteReader(connection, "SELECT userID, username, password FROM Users " +
-                    "WHERE username LIKE '" + username + "'");
-                try
-                {
-                    while (reader.Read())
-                    {
-                        user = new(reader.GetString(1), reader.GetString(2))
-                        {
-                            ID = reader.GetInt32(0)
-                        };
-                    }
-                }
-                catch (Exception)
-                {
-                }
-            }
-            return user;
-        }
-
-        /// <summary>
         /// Gets all the todos from the database, that a user created
         /// </summary>
         /// <param name="username">The user to check</param>

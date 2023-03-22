@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Security.Cryptography;
@@ -48,16 +49,19 @@ namespace ClassLibrary
         public static bool ValidateLogin(string loginUsername, string loginPassword)
         {
             string hashedPassword = HashPassword(loginPassword);
-            User user = Database.Database.Instance.ImportUser(loginUsername);
+            string query = $"SELECT count(*) FROM Users WHERE username='{loginUsername}' AND password='{hashedPassword}'";
 
-            if (user.Username == loginUsername)
+            using (SqlConnection conn = Database.Database.GetDatabaseConnection())
             {
-                if (user.Password == hashedPassword)
+                SqlCommand cmd = new(query, conn);
+                int numrows = (int)cmd.ExecuteScalar();
+                
+                if (numrows == 1)
                 {
                     return true;
                 }
+                else { return false; }
             }
-            return false;
         }
 
         /// <summary>
@@ -67,16 +71,19 @@ namespace ClassLibrary
         /// <returns>Returns boolean</returns>
         public static bool UserExist(string loginUsername)
         {
-            ObservableCollection<User> users = Database.Database.Instance.ImportAllUsers();
+            string query = $"SELECT count(*) FROM Users WHERE username='{loginUsername}'";
 
-            for (int i = 0; i < users.Count; i++)
+            using (SqlConnection conn = Database.Database.GetDatabaseConnection())
             {
-                if (users[i].Username == loginUsername)
+                SqlCommand cmd = new(query, conn);
+                int numrows = (int)cmd.ExecuteScalar();
+
+                if (numrows == 0)
                 {
-                    return true;
+                    return false;
                 }
+                else { return true; }
             }
-            return false;
         }
     }
 }
