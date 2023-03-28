@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ClassLibrary
+﻿namespace ClassLibrary
 {
     public class ToDo
     {
@@ -16,11 +10,6 @@ namespace ClassLibrary
         {
             Username = username;
             Description = description;
-        }
-
-        public override string ToString()
-        {
-            return $"{ID}: {Description}";
         }
     }
 }

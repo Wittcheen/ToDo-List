@@ -1,19 +1,7 @@
 ﻿using ClassLibrary.Database;
 using Client.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Client.UserControls
 {
@@ -37,6 +25,10 @@ namespace Client.UserControls
             {
                 vm.ConfirmMessage = "Are you sure, you wan't to sign out?";
             }
+            else
+            {
+                vm.ConfirmMessage = "ERROR!";
+            }
         }
 
         public Confirm(bool deleteToDo, int toDoID)
@@ -49,6 +41,10 @@ namespace Client.UserControls
             if (deleteToDo == true)
             {
                 vm.ConfirmMessage = $"Are you sure, you wan't to delete to-do {toDoID}?";
+            }
+            else
+            {
+                vm.ConfirmMessage = "ERROR!";
             }
         }
 
