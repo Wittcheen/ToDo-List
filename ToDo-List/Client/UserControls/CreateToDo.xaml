@@ -19,7 +19,6 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-
         <Border Grid.Row="1" Grid.Column="1" Background="#f3f3f3" CornerRadius="20">
             <StackPanel Margin="20">
                 <Label Content="Create a to-do" Foreground="#1c1d25" FontSize="45" FontFamily="League Spartan" HorizontalAlignment="Center"/>
