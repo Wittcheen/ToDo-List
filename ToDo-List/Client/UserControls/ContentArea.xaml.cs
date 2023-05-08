@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using ClassLibrary;
+using System.Windows.Controls;
 
 namespace Client.UserControls
 {
@@ -21,7 +22,9 @@ namespace Client.UserControls
         public static void NavigateToSignUp() => Navigator(new SignUp());
         public static void NavigateToHomeScreen() => Navigator(new HomeScreen());
         public static void NavigateToConfirmSignOut() => Navigator(new Confirm(true));
+        public static void NavigateToConfirmEditToDo(int toDoID, ToDo toDo) => Navigator(new Confirm(true, toDo, toDoID));
         public static void NavigateToConfirmDeleteToDo(int toDoID) => Navigator(new Confirm(true, toDoID));
         public static void NavigateToCreateToDo() => Navigator(new CreateToDo());
+        public static void NavigateToEditToDo(int toDoID) => Navigator(new EditToDo(toDoID));
     }
 }

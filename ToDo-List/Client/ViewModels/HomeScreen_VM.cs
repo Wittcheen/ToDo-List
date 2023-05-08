@@ -65,9 +65,9 @@ namespace Client.ViewModels
 
         public void FillUsersToDos()
         {
-            foreach (var todo in Database.Instance.ImportUsersToDos(Username))
+            foreach (var toDo in Database.Instance.ImportUsersToDos(Username))
             {
-                UsersToDos.Add(todo);
+                UsersToDos.Add(toDo);
                 UsersToDosCount++;
             }
         }

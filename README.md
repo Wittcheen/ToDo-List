@@ -10,8 +10,8 @@
 </div>
 
 ## <div align="center">Home Screen</div>
-<div align="center">When you are logged in, you can see the home screen, then create and delete to-dos.</div>
+<div align="center">When you are logged in, you can see the home screen, then create, edit and delete to-dos.</div>
 <br><br>
 <div align="center">
-<img src="https://i.gyazo.com/f38515f9371e5967f4682ede0a2ce93a.png" align="center" width="70%" height="70%"/>
+<img src="https://i.gyazo.com/2631731aa7427dbe58ca5bc7fa0810a3.png" align="center" width="70%" height="70%"/>
 </div>

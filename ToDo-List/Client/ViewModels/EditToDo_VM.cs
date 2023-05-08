@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 
 namespace Client.ViewModels
 {
-    public class CreateToDo_VM : INotifyPropertyChanged
+    public class EditToDo_VM : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -15,10 +15,10 @@ namespace Client.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private static CreateToDo_VM? instance;
+        private static EditToDo_VM? instance;
         private static readonly object padlock = new();
 
-        public static CreateToDo_VM Instance
+        public static EditToDo_VM Instance
         {
             get
             {
@@ -52,7 +52,13 @@ namespace Client.ViewModels
             }
         }
 
-        public void CreateToDo()
+        public void FillToDo(int toDoID)
+        {
+            ToDo toDo = Database.Instance.ImportUsersToDo(SignIn_VM.Instance.Username, toDoID);
+            ToDo = toDo.Description;
+        }
+
+        public void EditToDo(int toDoID)
         {
             ToDo = ToDo == null ? string.Empty : ToDo.TrimStart();
             ToDo = ToDo.TrimEnd();
@@ -60,8 +66,8 @@ namespace Client.ViewModels
             if (ToDo != string.Empty)
             {
                 ToDo toDo = new(SignIn_VM.Instance.Username, ToDo);
-                Database.Instance.CreateToDo(toDo);
-                ContentArea.NavigateToHomeScreen();
+                Database.Instance.EditToDo(toDo, toDoID);
+                ContentArea.NavigateToConfirmEditToDo(toDoID, toDo);
                 ToDo = string.Empty;
                 ErrorMessage = string.Empty;
             }

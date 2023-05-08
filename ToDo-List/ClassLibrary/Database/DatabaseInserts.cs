@@ -17,13 +17,13 @@
         /// <summary>
         /// Inserts the creates auction into the database
         /// </summary>
-        /// <param name="todo">The todo to create</param>
+        /// <param name="toDo">The todo to create</param>
         /// <returns>The todo created</returns>
-        public ToDo CreateToDo(ToDo todo)
+        public ToDo CreateToDo(ToDo toDo)
         {
-            string sqlInsert = $@"EXEC CreateTodo {todo.Username}, '{todo.Description}'";
+            string sqlInsert = $@"EXEC CreateTodo {toDo.Username}, '{toDo.Description}'";
             ExecuteSqlCommand(sqlInsert);
-            return todo;
+            return toDo;
         }
     }
 }

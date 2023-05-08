@@ -25,6 +25,9 @@
                             <Border Background="#2b2d38" BorderThickness="0" CornerRadius="5" Margin="10,5,10,0" Padding="5">
                                 <Grid>
                                     <Label Foreground="#f3f3f3" Content="{Binding Description}" FontSize="14" FontFamily="League Spartan" Margin="0,2,0,0"/>
+                                    <Button Tag="{Binding ID}" Style="{StaticResource btn_Light}" Margin="0,0,75,0" Width="70" Height="30" FontSize="13" HorizontalAlignment="Right" Click="EditToDo_Click">
+                                        <Label Content="Edit" Margin="0,2,0,0"/>
+                                    </Button>
                                     <Button Tag="{Binding ID}" Style="{StaticResource btn_Light}" Width="70" Height="30" FontSize="13" HorizontalAlignment="Right" Click="DeleteToDo_Click">
                                         <Label Content="Delete" Margin="0,2,0,0"/>
                                     </Button>

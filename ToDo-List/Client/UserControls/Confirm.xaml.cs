@@ -1,4 +1,5 @@
-﻿using ClassLibrary.Database;
+﻿using ClassLibrary;
+using ClassLibrary.Database;
 using Client.ViewModels;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,7 +13,9 @@ namespace Client.UserControls
     {
         private readonly Confirm_VM vm = Confirm_VM.Instance;
         private bool SignOut;
+        private bool EditToDo;
         private bool DeleteToDo;
+        private ToDo ToDo;
         private int ToDoID;
 
         public Confirm(bool signOut)
@@ -24,6 +27,24 @@ namespace Client.UserControls
             if (signOut == true)
             {
                 vm.ConfirmMessage = "Are you sure, you wan't to sign out?";
+            }
+            else
+            {
+                vm.ConfirmMessage = "ERROR!";
+            }
+        }
+
+        public Confirm(bool editToDo, ToDo toDo, int toDoID)
+        {
+            InitializeComponent();
+            DataContext = vm;
+
+            EditToDo = editToDo;
+            ToDoID = toDoID;
+            ToDo = toDo;
+            if (editToDo == true)
+            {
+                vm.ConfirmMessage = $"Are you sure, you wan't to edit to-do {toDoID}?";
             }
             else
             {
@@ -53,6 +74,11 @@ namespace Client.UserControls
             if (SignOut == true)
             {
                 ContentArea.NavigateToSignIn();
+            }
+            if (EditToDo == true)
+            {
+                Database.Instance.EditToDo(ToDo, ToDoID);
+                ContentArea.NavigateToHomeScreen();
             }
             if (DeleteToDo == true)
             {

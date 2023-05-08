@@ -21,11 +21,11 @@ namespace ClassLibrary.Database
                 {
                     while (reader.Read())
                     {
-                        ToDo todo = new(reader.GetString(1), reader.GetString(2))
+                        ToDo toDo = new(reader.GetString(1), reader.GetString(2))
                         {
                             ID = reader.GetInt32(0)
                         };
-                        toDos.Add(todo);
+                        toDos.Add(toDo);
                     }
                 }
                 catch (Exception)
@@ -33,6 +33,36 @@ namespace ClassLibrary.Database
                 }
             }
             return toDos;
+        }
+
+        /// <summary>
+        /// Gets the users todo from the database from id
+        /// </summary>
+        /// <param name="username">The user to check</param>
+        /// <param name="toDoID">The to-do id</param>
+        /// <returns>A todo with the id, that the user created</returns>
+        public ToDo ImportUsersToDo(string username, int toDoID)
+        {
+            ToDo? toDo = null;
+            using (var connection = GetDatabaseConnection())
+            {
+                SqlDataReader reader = ExecuteReader(connection, "SELECT ToDoID, username_FK, description " +
+                    "FROM ToDos WHERE username_FK LIKE '" + username + "' AND ToDoID = "+ toDoID);
+                try
+                {
+                    while (reader.Read())
+                    {
+                        toDo = new(reader.GetString(1), reader.GetString(2))
+                        {
+                            ID = reader.GetInt32(0)
+                        };
+                    }
+                }
+                catch (Exception)
+                {
+                }
+            }
+            return toDo;
         }
     }
 }

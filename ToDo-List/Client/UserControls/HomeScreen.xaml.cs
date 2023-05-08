@@ -27,6 +27,18 @@ namespace Client.UserControls
             ContentArea.NavigateToConfirmSignOut();
         }
 
+        private void EditToDo_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                int toDoID = Convert.ToInt32((sender as Button).Tag);
+                ContentArea.NavigateToEditToDo(toDoID);
+            }
+            catch (Exception)
+            {
+            }
+        }
+
         private void DeleteToDo_Click(object sender, RoutedEventArgs e)
         {
             try
